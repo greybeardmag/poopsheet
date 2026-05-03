@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poop Sheet — Pediatric Constipation Management</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💩</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="screen-wrapper">
+
+  <!-- ══════════════════════════════
+       HEADER
+  ══════════════════════════════ -->
+  <header>
+    <div class="header-left">
+      <h1>
+        <span data-i18n="header_emoji" aria-hidden="true">💩</span>
+        <span data-i18n="header_title">Poop</span>
+        <span style="color:var(--blue)" data-i18n="header_title_highlight">Sheet</span>
+      </h1>
+      <p data-i18n="header_subtitle">Evidence-based strategies and weight-based PEG 3350 dosing for constipation in children, based on SickKids AboutKidsHealth, CHEO, and CPS guidelines.</p>
+
+      <!-- Language selector sits below subtitle -->
+      <div class="lang-selector-wrap">
+        <span class="lang-selector-label" data-i18n="lang_selector_label">Language</span>
+        <select id="langSelect" aria-label="Language selector"></select>
+      </div>
+    </div>
+
+    <button class="print-btn" onclick="window.print()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="6 9 6 2 18 2 18 9"/>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+        <rect x="6" y="14" width="12" height="8"/>
+      </svg>
+      <span data-i18n="print_btn">Print Sheet</span>
+    </button>
+  </header>
+
+  <!-- ══════════════════════════════
+       SECTION 1 — WHAT IS CONSTIPATION?
+  ══════════════════════════════ -->
+  <div class="section-heading" data-i18n="s1_heading">What is Constipation?</div>
+
+  <!-- Definition + Red flags — side by side -->
+  <div style="display:flex; gap:14px; align-items:stretch; margin-bottom:20px; flex-wrap:wrap;">
+
+    <div class="fever-box" style="margin-bottom:0; flex:1; min-width:240px;">
+      <div class="fever-icon" aria-hidden="true">🚽</div>
+      <div>
+        <h3 data-i18n="defn_box_heading">Clinical Definition</h3>
+        <div class="fever-temps">
+          <div class="temp-chip bss-constipation">
+            <span data-i18n="bss_chip_1_label">Bristol 1–2</span>
+            <span data-i18n="bss_chip_1_desc">Constipation</span>
+          </div>
+          <div class="temp-chip bss-ideal">
+            <span data-i18n="bss_chip_34_label">Bristol 3–4</span>
+            <span data-i18n="bss_chip_34_desc">Ideal</span>
+          </div>
+          <div class="temp-chip bss-loose">
+            <span data-i18n="bss_chip_67_label">Bristol 6–7</span>
+            <span data-i18n="bss_chip_67_desc">Diarrhea</span>
+          </div>
+        </div>
+        <div class="fever-note" data-i18n-html="defn_note_html">
+          <strong>Constipation</strong> is defined as fewer than 2 bowel movements per week, or stools that are hard, dry, and painful to pass (Bristol types 1–2). Bristol types 3–4 are the target consistency. Types 6–7 indicate diarrhea. Constipation is extremely common in children and is usually not serious.
+        </div>
+      </div>
+    </div>
+
+    <div class="fever-box" style="margin-bottom:0; padding:14px 18px; flex:1; min-width:220px; background:var(--red-light); border-color:#f0c5c2; border-left-color:var(--red);">
+      <div class="fever-icon" style="font-size:1.3rem;" aria-hidden="true">🚨</div>
+      <div>
+        <h3 style="color:var(--red);" data-i18n="redflag_title">Red Flag Symptoms — Seek Medical Attention</h3>
+        <ul style="font-size:0.75rem; line-height:1.6; margin:0; padding-inline-start:14px; color:#7a1818;">
+          <li data-i18n="redflag_1">Blood in the stool</li>
+          <li data-i18n="redflag_2">Ribbon-like or pencil-thin stools</li>
+          <li data-i18n="redflag_3">Severe abdominal distension</li>
+          <li data-i18n="redflag_4">Vomiting with constipation</li>
+          <li data-i18n="redflag_5">No meconium passed within 48 hours of birth</li>
+          <li data-i18n="redflag_6">Constipation beginning in the first month of life</li>
+          <li data-i18n="redflag_7">Neurological symptoms (weakness, decreased tone)</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════
+       SECTION 2 — PEG 3350 DOSING CALCULATOR
+  ══════════════════════════════ -->
+  <div class="section-heading" data-i18n="s2_heading">PEG 3350 Dosing Calculator</div>
+
+  <!-- About PEG + Input Card — side by side -->
+  <div style="display:flex; gap:14px; align-items:stretch; margin-bottom:18px; flex-wrap:wrap;">
+
+    <!-- About PEG info box -->
+    <div class="fever-box" style="margin-bottom:0; flex:1; min-width:220px;">
+      <div class="fever-icon" aria-hidden="true">💊</div>
+      <div>
+        <h3 data-i18n="peg_box_heading">About PEG 3350</h3>
+        <div class="fever-note" data-i18n-html="peg_box_html">
+          PEG 3350 is sold in Canada as <strong>Lax-A-Day</strong> and <strong>RestoraLAX</strong> (and generically). It is an osmotic laxative — tasteless and odourless. Suitable for children <strong>≥ 6 months</strong>. One standard sachet or one full RestoraLAX cap = <strong>17 g</strong>.
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Card — weight + kg/lbs toggle only -->
+    <div class="input-card" style="margin-bottom:0; flex:0 0 auto; align-self:stretch;">
+      <div>
+        <label for="weightInput" data-i18n="label_weight">Child's Weight</label>
+        <div class="weight-row">
+          <input class="weight-input" id="weightInput"
+                 type="number" min="1" max="150" step="0.1"
+                 data-i18n-placeholder="weight_placeholder"
+                 placeholder="—"
+                 oninput="debouncedCalculate()">
+          <div class="unit-toggle">
+            <button class="unit-btn active" id="btnKg" onclick="setUnit('kg')">kg</button>
+            <button class="unit-btn" id="btnLbs" onclick="setUnit('lbs')">lbs</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.peg-input-row -->
+
+  <!-- Low-weight note — outside the input card so it never shifts the card layout -->
+  <div class="input-age-note hidden" id="inputAgeNote"
+       style="border-radius:8px; padding:8px 14px; font-size:0.74rem; line-height:1.45; margin-bottom:14px;"></div>
+
+  <!-- ── PHASE 1: DISIMPACTION ── -->
+  <div style="
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;">
+    <span aria-hidden="true">①</span>
+    <span data-i18n="phase_disimp_label">Phase 1 — Disimpaction</span>
+  </div>
+
+  <div class="max-banner" style="border-color:#f0c5c2; background:var(--red-light);">
+    <div class="max-item">
+      <div class="max-label" style="color:var(--red);" data-i18n="disimp_dose_label">Disimpaction Dose</div>
+      <div class="max-val" style="color:var(--red);" id="disimpDose">—</div>
+      <div class="max-sub" data-i18n="disimp_dose_sub">1.5 g/kg/day · max 100 g/day</div>
+    </div>
+    <div class="max-item">
+      <div class="max-label" style="color:var(--red);" data-i18n="disimp_duration_label">Duration</div>
+      <div class="max-val" style="color:var(--red);" data-i18n="disimp_duration_val">3–6 days</div>
+      <div class="max-sub" data-i18n="disimp_duration_sub">Until disimpaction confirmed</div>
+    </div>
+    <div class="max-item">
+      <div class="max-label" style="color:var(--red);" data-i18n="disimp_max_label">Daily Maximum</div>
+      <div class="max-val" style="color:var(--red);" data-i18n="disimp_max_val">100 g / 10 caps</div>
+      <div class="max-sub" data-i18n="disimp_max_sub">Physician guidance required</div>
+    </div>
+  </div>
+
+  <div class="dose-result-card" style="border-top: 3px solid var(--red); margin-bottom:24px;">
+    <h4 style="color:var(--red);" data-i18n="disimp_result_heading">Disimpaction Dose — Calculated</h4>
+    <div style="display:flex; gap:0; align-items:stretch;">
+
+      <!-- Daily dose group -->
+      <div style="flex:1; display:flex; flex-direction:column; gap:10px; padding-right:20px;">
+        <div class="dose-result-label" style="font-size:0.65rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--mid);" data-i18n="disimp_group_daily">Single Daily Dose</div>
+        <div style="display:flex; gap:16px; flex-wrap:wrap;">
+          <div class="dose-result-item">
+            <div class="dose-result-label" data-i18n="res_disimp_g">Daily dose (g)</div>
+            <div class="dose-result-value" id="disimpDoseG" style="color:var(--red);">—</div>
+            <div class="dose-result-unit" id="disimpDoseTsp">—</div>
+          </div>
+          <div class="dose-result-item">
+            <div class="dose-result-label" data-i18n="res_disimp_cap">Daily dose (caps)</div>
+            <div class="dose-result-value" id="disimpDoseCap" style="color:var(--red);">—</div>
+            <div class="dose-result-unit" data-i18n="res_disimp_cap_sub">17 g per cap</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vertical divider -->
+      <div style="width:1px; background:var(--rule); flex-shrink:0; margin:0 4px;"></div>
+
+      <!-- Split dose group -->
+      <div style="flex:1; display:flex; flex-direction:column; gap:10px; padding-left:20px;">
+        <div class="dose-result-label" style="font-size:0.65rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--mid);" data-i18n="disimp_group_split">Split — Twice Daily (each dose)</div>
+        <div style="display:flex; gap:16px; flex-wrap:wrap;">
+          <div class="dose-result-item">
+            <div class="dose-result-label" data-i18n="res_disimp_split">Split dose (g)</div>
+            <div class="dose-result-value" id="disimpSplitG" style="color:var(--red);">—</div>
+            <div class="dose-result-unit" id="disimpSplitTsp">—</div>
+          </div>
+          <div class="dose-result-item">
+            <div class="dose-result-label" data-i18n="res_disimp_split_cap">Split dose (caps)</div>
+            <div class="dose-result-value" id="disimpSplitCap" style="color:var(--red);">—</div>
+            <div class="dose-result-unit" data-i18n="res_disimp_cap_sub2">17 g per cap</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="dose-result-note" data-i18n-html="disimp_note_html">
+      <strong>Physician guidance required.</strong> Confirm impaction before starting. Give 1.5 g/kg/day for <strong>3–6 days</strong>. May be given as a single daily dose or split into two doses. Once disimpaction is confirmed (soft stool passed, abdomen soft), stop and transition immediately to maintenance dosing below. Maximum 100 g/day (10 caps).
+    </div>
+  </div>
+
+  <!-- ── PHASE 2: MAINTENANCE ── -->
+  <div style="
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;">
+    <span aria-hidden="true">②</span>
+    <span data-i18n="phase_maint_label">Phase 2 — Maintenance</span>
+  </div>
+
+  <div class="max-banner" style="border-color:#b8d9c5; background:var(--green-light);">
+    <div class="max-item">
+      <div class="max-label" style="color:var(--green);" data-i18n="maint_low_label">Low End</div>
+      <div class="max-val" style="color:var(--green);" id="maintLow">—</div>
+      <div class="max-sub" data-i18n="maint_low_sub">0.4 g/kg/day</div>
+    </div>
+    <div class="max-item">
+      <div class="max-label" style="color:var(--green);" data-i18n="maint_high_label">High End</div>
+      <div class="max-val" style="color:var(--green);" id="maintHigh">—</div>
+      <div class="max-sub" data-i18n="maint_high_sub">0.8 g/kg/day</div>
+    </div>
+    <div class="max-item">
+      <div class="max-label" style="color:var(--green);" data-i18n="maint_duration_label">Duration</div>
+      <div class="max-val" style="color:var(--green);" data-i18n="maint_duration_val">Weeks–months</div>
+      <div class="max-sub" data-i18n="maint_duration_sub">Until regular habits established</div>
+    </div>
+    <div class="max-item">
+      <div class="max-label" style="color:var(--green);" data-i18n="maint_max_label">Daily Maximum</div>
+      <div class="max-val" style="color:var(--green);">17 g</div>
+      <div class="max-sub" data-i18n="maint_max_sub">1 standard sachet / 1 full cap</div>
+    </div>
+  </div>
+
+  <div class="dose-result-card" style="border-top: 3px solid var(--green); margin-bottom:20px;">
+    <h4 style="color:var(--green);" data-i18n="maint_result_heading">Maintenance Dose — Calculated</h4>
+    <div class="dose-result-grid">
+      <div class="dose-result-item">
+        <div class="dose-result-label" data-i18n="res_low_g">Low end (g/day)</div>
+        <div class="dose-result-value" id="maintLowG" style="color:var(--green);">—</div>
+        <div class="dose-result-unit" id="maintLowTsp">—</div>
+      </div>
+      <div class="dose-result-item">
+        <div class="dose-result-label" data-i18n="res_high_g">High end (g/day)</div>
+        <div class="dose-result-value" id="maintHighG" style="color:var(--green);">—</div>
+        <div class="dose-result-unit" id="maintHighTsp">—</div>
+      </div>
+      <div class="dose-result-item">
+        <div class="dose-result-label" data-i18n="res_cap_low">Cap measure (low)</div>
+        <div class="dose-result-value" id="maintLowCap" style="color:var(--green);">—</div>
+        <div class="dose-result-unit" data-i18n="res_cap_unit">of a 17 g cap</div>
+      </div>
+      <div class="dose-result-item">
+        <div class="dose-result-label" data-i18n="res_cap_high">Cap measure (high)</div>
+        <div class="dose-result-value" id="maintHighCap" style="color:var(--green);">—</div>
+        <div class="dose-result-unit" data-i18n="res_cap_unit2">of a 17 g cap</div>
+      </div>
+    </div>
+    <div class="dose-result-note" data-i18n-html="maint_note_html">
+      <strong>Start at the low end</strong> and titrate upward to achieve one soft stool per day. Effects may take 2–3 days. Maximum is 17 g/day (one standard Lax-A-Day / RestoraLAX sachet or one full cap). May be given as a single daily dose or split into two. Continue for <strong>weeks to months</strong> until regular bowel habits are well established before gradually weaning.
+    </div>
+  </div>
+
+  <!-- Mixing instructions -->
+  <div class="mix-card">
+    <div class="mix-card-icon" aria-hidden="true">💧</div>
+    <div class="mix-card-body">
+      <h4 data-i18n="mix_heading">How to Mix PEG 3350 (Lax-A-Day / RestoraLAX)</h4>
+      <p data-i18n-html="mix_body_html">Mix the powder in <strong>250 mL (1 cup)</strong> of water, juice, or milk. Stir until fully dissolved — it is <strong>tasteless and odourless</strong>. Can be mixed into a child's favourite drink. Do not mix with carbonated beverages. Suitable for children <strong>≥ 6 months</strong>.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       SECTION 3 — OTHER STRATEGIES
+  ══════════════════════════════ -->
+  <div class="section-heading" data-i18n="s3_heading">Other Evidence-Based Strategies</div>
+
+  <div class="strategies-grid">
+
+    <!-- Dietary Fibre -->
+    <div class="strategy-card accent-green">
+      <h4>
+        <span class="strategy-icon" aria-hidden="true">🥦</span>
+        <span data-i18n="strat_fibre_title">Dietary Fibre</span>
+      </h4>
+      <ul>
+        <li data-i18n-html="strat_fibre_target_html"><strong>Target:</strong> child's age in years + 5 g/day (e.g. a 4-year-old needs ~9 g/day)</li>
+        <li data-i18n-html="strat_fibre_foods_html"><strong>High-fibre foods:</strong> pears, prunes, apples (with skin), berries, broccoli, carrots, peas, oatmeal, whole wheat bread, bran cereals, beans, lentils</li>
+        <li data-i18n="strat_fibre_dairy">Avoid excessive dairy (milk, cheese) — can worsen constipation</li>
+        <li data-i18n="strat_fibre_gradual">Introduce fibre gradually to avoid gas and bloating</li>
+      </ul>
+    </div>
+
+    <!-- Fluid Intake -->
+    <div class="strategy-card accent-blue">
+      <h4>
+        <span class="strategy-icon" aria-hidden="true">🥤</span>
+        <span data-i18n="strat_fluid_title">Fluid Intake</span>
+      </h4>
+      <table class="fluid-table">
+        <thead>
+          <tr>
+            <th data-i18n="fluid_col_age">Age</th>
+            <th data-i18n="fluid_col_amount">Target / day</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-i18n="fluid_age_1">1–3 years</td>
+            <td data-i18n="fluid_amt_1">~4 cups (1 L)</td>
+          </tr>
+          <tr>
+            <td data-i18n="fluid_age_2">4–8 years</td>
+            <td data-i18n="fluid_amt_2">~5 cups (1.2 L)</td>
+          </tr>
+          <tr>
+            <td data-i18n="fluid_age_3">9–13 years</td>
+            <td data-i18n="fluid_amt_3">~7–8 cups (1.7 L)</td>
+          </tr>
+        </tbody>
+      </table>
+      <ul>
+        <li data-i18n="strat_fluid_best">Water and milk are best; limit juice to ≤ 125 mL/day for toddlers</li>
+        <li data-i18n-html="strat_fluid_prune_html"><strong>Prune juice</strong> has evidence for mild constipation: 60–120 mL/day for infants &gt;1 month; 125 mL/day for toddlers</li>
+      </ul>
+    </div>
+
+    <!-- Toilet Routine -->
+    <div class="strategy-card accent-orange">
+      <h4>
+        <span class="strategy-icon" aria-hidden="true">🚽</span>
+        <span data-i18n="strat_toilet_title">Toilet Routine</span>
+      </h4>
+      <ul>
+        <li data-i18n-html="strat_toilet_gcr_html">Scheduled sitting <strong>after meals</strong> — gastrocolic reflex is strongest 20–30 min after eating</li>
+        <li data-i18n="strat_toilet_sit">Sit for 5–10 minutes; avoid rushing or pressuring the child</li>
+        <li data-i18n-html="strat_toilet_stool_html">Use a <strong>footstool</strong> so knees are above hips — squatting position relaxes the puborectalis muscle</li>
+        <li data-i18n="strat_toilet_praise">Positive reinforcement — praise the attempt, not just success</li>
+      </ul>
+    </div>
+
+    <!-- Physical Activity -->
+    <div class="strategy-card accent-purple">
+      <h4>
+        <span class="strategy-icon" aria-hidden="true">🏃</span>
+        <span data-i18n="strat_activity_title">Physical Activity</span>
+      </h4>
+      <ul>
+        <li data-i18n="strat_activity_motility">Regular physical activity stimulates bowel motility</li>
+        <li data-i18n="strat_activity_goal">Aim for 60 minutes of moderate activity per day for school-age children</li>
+        <li data-i18n="strat_activity_walk">Even short walks after meals can help</li>
+      </ul>
+    </div>
+
+    <!-- Behavioural Strategies — spans full width -->
+    <div class="strategy-card accent-red" style="grid-column: 1 / -1;">
+      <h4>
+        <span class="strategy-icon" aria-hidden="true">📋</span>
+        <span data-i18n="strat_behav_title">Behavioural Strategies</span>
+      </h4>
+      <ul>
+        <li data-i18n="strat_behav_diary">Keep a stool diary to track frequency, consistency, and any pain</li>
+        <li data-i18n="strat_behav_chart">Reward charts for toilet sitting (not for producing a stool — reduces performance anxiety)</li>
+        <li data-i18n="strat_behav_accidents">Avoid punishing accidents — withholding is often involuntary and not deliberate</li>
+        <li data-i18n="strat_behav_training">For toilet-training age children: ensure readiness before training; regression during training is common with constipation</li>
+      </ul>
+    </div>
+
+  </div><!-- /.strategies-grid -->
+
+  <!-- ══════════════════════════════
+       SECTION 4 — WHEN TO SEEK CARE
+  ══════════════════════════════ -->
+  <div class="section-heading" data-i18n="s4_heading">When to Seek Medical Attention</div>
+
+  <div class="emergency-card">
+    <div class="emergency-icon" aria-hidden="true">🚨</div>
+    <div class="emergency-body" style="flex:1;">
+      <h3 data-i18n="emerg_title">When to Seek Medical Attention</h3>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px 20px; margin-top:8px;">
+
+        <div>
+          <div class="emergency-tier" data-i18n="emerg_tier_ed">Go to the Emergency Department if:</div>
+          <ul>
+            <li data-i18n="emerg_ed_1">Blood in stool (significant amount)</li>
+            <li data-i18n="emerg_ed_2">Severe abdominal pain or distension</li>
+            <li data-i18n="emerg_ed_3">Bilious (green) vomiting with constipation</li>
+            <li data-i18n="emerg_ed_4">Child appears very unwell or lethargic</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="emergency-tier" data-i18n="emerg_tier_doc">See your doctor or nurse practitioner if:</div>
+          <ul>
+            <li data-i18n="emerg_doc_1">No bowel movement for more than 1 week despite home management</li>
+            <li data-i18n="emerg_doc_2">Constipation has been present since birth or early infancy</li>
+            <li data-i18n="emerg_doc_3">Child is losing weight or not growing well</li>
+            <li data-i18n="emerg_doc_4">Painful anal fissures or rectal prolapse</li>
+            <li data-i18n="emerg_doc_5">Urinary symptoms: recurrent UTIs or daytime wetting</li>
+            <li data-i18n="emerg_doc_6">You are concerned for any reason</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       FOOTER
+  ══════════════════════════════ -->
+  <footer data-i18n-html="footer_html">
+    <strong>Disclaimer:</strong> This sheet is a clinical reference aid. PEG 3350 doses are based on published Canadian pediatric guidelines (SickKids AboutKidsHealth, CHEO, CPS). Individual patient factors including age, organ function, concurrent medications, and clinical context must always be considered. This tool does not replace clinical judgment or individualized medical advice.
+  </footer>
+  <footer class="no-print" style="margin-top: 8px; font-size: 0.67rem; color: var(--mid);">
+    This webpage and translations were generated using AI (Claude); please check dosing and translations for accuracy prior to distribution.
+    <a href="https://paypal.me/MichaelBravo" target="_blank" rel="noopener" style="color: #2563A8; margin-left: 4px;">If this tool was helpful, consider buying me a coffee.</a>
+  </footer>
+
+</div><!-- /.screen-wrapper -->
+
+<script src="script.js" defer></script>
+</body>
+</html>
